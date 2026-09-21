@@ -69,10 +69,24 @@ function renderCompare(){
  const order=d3.range(12).map(i=>(i+state.period-1)%12+1),calendarDays=[];
  order.forEach(m=>{const days=new Date(Date.UTC(2000,m,0)).getUTCDate();for(let d=1;d<=days;d++)calendarDays.push([m,d]);});
  const labels=monthly?order.map(m=>MONTHS[m-1]):calendarDays.map(([m,d])=>`${d} ${MONTHS[m-1]}`),monMap=new Map(src.monthly.map(r=>[r[0],r]));
+ const monthNormals=src.normal.map(r=>r.slice());
+ // When the latest year is visible, compare the unfinished month over identical days.
+ const [currentYear,currentMonth,currentDay]=data.last_date.split('-').map(Number);
+ if(!ns&&monthly&&act.includes(ly)&&currentDay<new Date(Date.UTC(currentYear,currentMonth,0)).getUTCDate()){
+  const mm=String(currentMonth).padStart(2,'0');
+  for(let yy=1981;yy<=currentYear;yy++){
+   const rs=Array.from({length:currentDay},(_,i)=>byDate.get(`${yy}-${mm}-${String(i+1).padStart(2,'0')}`));
+   const values=[1,2,3,4].map(j=>rs.every(r=>r&&r[j]!==null)?rs.reduce((sum,r)=>sum+r[j],0)/(j===1?1:currentDay):null);
+   monMap.set(`${yy}-${mm}`,[`${yy}-${mm}`,...values]);
+  }
+  monthNormals[currentMonth-1]=[0,1,2,3].map(j=>Array.from({length:currentDay},(_,i)=>data.daily_normal[`${mm}-${String(i+1).padStart(2,'0')}`][j]).reduce((a,b)=>a+b,0)/(j===0?1:currentDay));
+  labels[order.indexOf(currentMonth)]=`${MONTHS[currentMonth-1]} 1–${currentDay}`;
+  $('compare-note').textContent=`Mois en cours : ${MONTHS[currentMonth-1]}, du 1 au ${currentDay} uniquement, pour toutes les années et la normale. Aucun total de mois complet n’est estimé. ERA5 jusqu’au ${datefmt(data.era5_through)} ; IFS provisoire ensuite.`;
+ }
  for(const [name,j,unit] of dims){
   const series=[];
   for(const yy of years.filter(y=>state.background||act.includes(y))){let sum=0,nsum=0,broken=false;
-   const points=monthly?order.map((m,i)=>{let year=yy+(m<state.period?1:0),key=`${year}-${String(m).padStart(2,'0')}`,r=monMap.get(key),v=r?.[j+1]??null;return{x:i,y:v===null?null:v-(an?src.normal[m-1][j]:0)};}):calendarDays.map(([m,d],i)=>{
+   const points=monthly?order.map((m,i)=>{let year=yy+(m<state.period?1:0),key=`${year}-${String(m).padStart(2,'0')}`,r=monMap.get(key),v=r?.[j+1]??null;return{x:i,y:v===null?null:v-(an?monthNormals[m-1][j]:0)};}):calendarDays.map(([m,d],i)=>{
     let year=yy+(m<state.period?1:0),date=`${year}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     if(d>new Date(Date.UTC(year,m,0)).getUTCDate())return{x:i,y:null};
     const r=byDate.get(date),v=r?.[j+1]??null,n=data.daily_normal[date.slice(5)]?.[j]??null;
@@ -83,7 +97,7 @@ function renderCompare(){
   }
   series.sort((a,b)=>Number(!a.background)-Number(!b.background));
   let total=0;
-  const np=monthly?order.map((m,i)=>({x:i,y:an?0:src.normal[m-1][j]})):calendarDays.map(([m,d],i)=>{let year=state.year+(m<state.period?1:0);if(d>new Date(Date.UTC(year,m,0)).getUTCDate())return{x:i,y:null};let v=data.daily_normal[`${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`]?.[j]??null;if(cumulative&&v!==null)total+=v;return{x:i,y:an?0:cumulative?total:v};});
+  const np=monthly?order.map((m,i)=>({x:i,y:an?0:monthNormals[m-1][j]})):calendarDays.map(([m,d],i)=>{let year=state.year+(m<state.period?1:0);if(d>new Date(Date.UTC(year,m,0)).getUTCDate())return{x:i,y:null};let v=data.daily_normal[`${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`]?.[j]??null;if(cumulative&&v!==null)total+=v;return{x:i,y:an?0:cumulative?total:v};});
   series.push({name:'Normale',points:np,color:'#203b50',width:2.2,dash:'6 4',normal:true});
   plot('compare-'+j,series,{labels,unit,axis:monthly?'Mois de l’année sélectionnée':'Jour de l’année sélectionnée',all:state.all});
  }
