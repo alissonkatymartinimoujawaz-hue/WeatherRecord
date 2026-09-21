@@ -9,28 +9,28 @@
         "latitude": -21.56,
         "longitude": -45.43,
         "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_para_fins_de_levantamentos_estatisticos/censo_demografico_2022/mapas_municipais_estatisticos/MG/varginha_3170701/varginha_3170701_mme_a0.pdf",
-        "coord_note": "IBGE 2022 map, SIRGAS 2000, coordinates published to 0.01 degree."
+        "coord_note": "IBGE carte 2022, SIRGAS 2000, coordonnées publiées à 0,01 degré."
       },
       {
         "name": "Carmo de Minas",
         "latitude": -22.121944,
         "longitude": -45.128889,
         "coord_source": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv56282.pdf",
-        "coord_note": "IBGE BCIM city coordinates: 22°07′19″ S, 45°07′44″ W. Converted to decimal degrees, rounded to 6 decimals; this does not imply metre-level accuracy."
+        "coord_note": "IBGE BCIM, ville : 22°07′19″ S, 45°07′44″ O. Conversion en degrés décimaux, arrondie à 6 décimales; ne signifie pas une précision métrique."
       },
       {
         "name": "Boa Esperança",
         "latitude": -21.083333,
         "longitude": -45.55,
         "coord_source": "https://www.gov.br/mdr/pt-br/composicao/orgaos-colegiados/comites-gestores-das-contas-dos-programas-de-revitalizacao-dos-recursos-hidricos/cpr-furnas/anexo-29-ampliacao-da-estacao-de-tratamento-de-esgoto-ete-de-boa-esperanca.pdf",
-        "coord_note": "SAAE Boa Esperança, section 5: approximate municipal position 21°05′ S, 45°33′ W. Representative point, not exact farm coordinates."
+        "coord_note": "SAAE Boa Esperança, section 5 : position municipale approximative 21°05′ S, 45°33′ O. Point représentatif et non coordonnées exactes d’une ferme."
       },
       {
         "name": "Guapé",
         "latitude": -20.761944,
         "longitude": -45.917778,
         "coord_source": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv56282.pdf",
-        "coord_note": "IBGE BCIM city coordinates: 20°45′43″ S, 45°55′04″ W. Converted to decimal degrees, rounded to 6 decimals."
+        "coord_note": "IBGE BCIM, ville : 20°45′43″ S, 45°55′04″ O. Conversion en degrés décimaux, arrondie à 6 décimales."
       }
     ]
   },
@@ -47,7 +47,7 @@
         "longitude": -46.99,
         "ibge_code": "3148103",
         "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/MG/patrocinio/3148103_MM.pdf",
-        "coord_note": "IBGE 2020 municipal map, coordinates published to 0.01 degree; city point, not a farm."
+        "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
       }
     ]
   },
@@ -64,7 +64,7 @@
         "longitude": -42.03,
         "ibge_code": "3139409",
         "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/MG/manhuacu/3139409_MM.pdf",
-        "coord_note": "IBGE 2020 municipal map, coordinates published to 0.01 degree; city point, not a farm."
+        "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
       }
     ]
   },
@@ -79,7 +79,7 @@
         "longitude": -39.86,
         "ibge_code": "3204906",
         "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/ES/sao_mateus/3204906_MM.pdf",
-        "coord_note": "IBGE 2020 municipal map, coordinates published to 0.01 degree; city point, not a farm."
+        "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
       }
     ]
   }
