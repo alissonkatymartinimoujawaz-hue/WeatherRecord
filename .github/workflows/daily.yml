@@ -24,10 +24,9 @@ jobs:
       - name: Refresh weather
         if: github.event_name != 'push'
         run: |
-          python scripts/update_weather.py
-          python scripts/update_nasa.py
+          python scripts/update_nasa_daily.py
       - name: Validate data
-        run: python scripts/validate_data.py
+        run: python scripts/validate_nasa.py
       - name: Preserve successful extraction
         if: github.event_name != 'push'
         run: |
