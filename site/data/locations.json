@@ -1,0 +1,34 @@
+[
+  {
+    "id": "Varginha",
+    "name": "Varginha",
+    "lat": -21.56,
+    "lon": -45.43,
+    "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_para_fins_de_levantamentos_estatisticos/censo_demografico_2022/mapas_municipais_estatisticos/MG/varginha_3170701/varginha_3170701_mme_a0.pdf",
+    "coord_note": "IBGE carte 2022, SIRGAS 2000, coordonnées publiées à 0,01 degré."
+  },
+  {
+    "id": "Carmo_de_Minas",
+    "name": "Carmo de Minas",
+    "lat": -22.121944,
+    "lon": -45.128889,
+    "coord_source": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv56282.pdf",
+    "coord_note": "IBGE BCIM, ville : 22°07′19″ S, 45°07′44″ O. Conversion en degrés décimaux, arrondie à 6 décimales; ne signifie pas une précision métrique."
+  },
+  {
+    "id": "Boa_Esperanca",
+    "name": "Boa Esperança",
+    "lat": -21.083333,
+    "lon": -45.55,
+    "coord_source": "https://www.gov.br/mdr/pt-br/composicao/orgaos-colegiados/comites-gestores-das-contas-dos-programas-de-revitalizacao-dos-recursos-hidricos/cpr-furnas/anexo-29-ampliacao-da-estacao-de-tratamento-de-esgoto-ete-de-boa-esperanca.pdf",
+    "coord_note": "SAAE Boa Esperança, section 5 : position municipale approximative 21°05′ S, 45°33′ O. Point représentatif et non coordonnées exactes d’une ferme."
+  },
+  {
+    "id": "Guape",
+    "name": "Guapé",
+    "lat": -20.761944,
+    "lon": -45.917778,
+    "coord_source": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv56282.pdf",
+    "coord_note": "IBGE BCIM, ville : 20°45′43″ S, 45°55′04″ O. Conversion en degrés décimaux, arrondie à 6 décimales."
+  }
+]
