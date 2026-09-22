@@ -142,7 +142,7 @@ async function loadRegion(){
   $('date').min=data.rows[0][0];$('date').max=data.last_date;$('date').value=data.last_date;
   const age=(Date.now()-Date.parse(data.updated_utc))/86400000,ns=state.source==='nasa';
   $('freshness').innerHTML=`${ns?'NASA POWER · daily updates':'ERA5 · archive, no automatic updates'}<br>Latest day: ${datefmt(data.last_date)}<br>Retrieved: ${new Date(data.updated_utc).toLocaleString('en-GB',{timeZone:'Europe/London',dateStyle:'short',timeStyle:'short'})} · London${ns&&age>2?'<br>Update overdue':''}`;
-  $('brand-region').textContent=region.name+' · BRAZIL';$('region-scope').textContent=region.scope;
+  $('brand-region').textContent=region.name+' · '+(region.country||'Brazil').toUpperCase();$('region-scope').textContent=region.scope;
   $('points').innerHTML=data.points.map(p=>`<tr><td><a href="${p.coord_source||'#'}" target="_blank" rel="noopener">${p.name}</a></td><td>${p.latitude}</td><td>${p.longitude}</td></tr>`).join('');
   $('selection-note').textContent=region.selection_note||'Four equally weighted points. Boa Esperança and Guapé share the same MERRA-2 grid cell, which therefore accounts for 50% of this index.';
   $('download-values').href=folder+file+'.csv';$('download-provenance').href=folder+(ns?'nasa_provenance.json':'provenance.json');
@@ -153,7 +153,9 @@ async function loadRegion(){
 async function init(){try{
  if(!window.d3)throw Error('The chart library could not be loaded. Refresh the page.');
  const res=await fetch('data/regions.json',{cache:'no-cache'});if(!res.ok)throw Error('Regions unavailable');regions=await res.json();
- $('region').innerHTML=regions.map(r=>`<option value="${r.id}">${r.name}</option>`).join('');
+ function populateRegions(country){$('region').innerHTML=regions.filter(r=>(r.country||'Brazil')===country).map(r=>`<option value="${r.id}">${r.name}</option>`).join('');}
+ $('country').value=(regions.find(r=>r.id===state.region)?.country)||'Brazil';populateRegions($('country').value);
+ $('country').onchange=e=>{populateRegions(e.target.value);state.region=$('region').value;state.period=e.target.value==='Vietnam'?10:7;state.year=null;state.compare=[];save();loadRegion();};
  $('region').onchange=e=>{state.region=e.target.value;loadRegion();};$('source').onchange=e=>{state.source=e.target.value;loadRegion();};await loadRegion();
  }catch(e){$('error').hidden=false;$('error').textContent=e.message;}}
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(data)switchView(view);},150);});init();

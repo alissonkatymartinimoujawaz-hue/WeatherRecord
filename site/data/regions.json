@@ -32,7 +32,8 @@
         "coord_source": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv56282.pdf",
         "coord_note": "IBGE BCIM, ville : 20°45′43″ S, 45°55′04″ O. Conversion en degrés décimaux, arrondie à 6 décimales."
       }
-    ]
+    ],
+    "country": "Brazil"
   },
   {
     "id": "cerrado",
@@ -49,7 +50,8 @@
         "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/MG/patrocinio/3148103_MM.pdf",
         "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
       }
-    ]
+    ],
+    "country": "Brazil"
   },
   {
     "id": "matas",
@@ -66,7 +68,8 @@
         "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/MG/manhuacu/3139409_MM.pdf",
         "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
       }
-    ]
+    ],
+    "country": "Brazil"
   },
   {
     "id": "sao-mateus",
@@ -80,6 +83,39 @@
         "ibge_code": "3204906",
         "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/ES/sao_mateus/3204906_MM.pdf",
         "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
+      }
+    ],
+    "country": "Brazil"
+  },
+  {
+    "id": "dak-lak",
+    "name": "Đắk Lắk",
+    "country": "Vietnam",
+    "scope": "Buôn Ma Thuột representative point in the historical coffee-growing province; not a province-wide spatial average.",
+    "selection_note": "Fixed Buôn Ma Thuột point for temporal comparability. Province names refer to the historical coffee-growing areas, not changing administrative boundaries. Daily observations are gridded NASA estimates, not a local station.",
+    "points": [
+      {
+        "name": "Buôn Ma Thuột",
+        "latitude": 12.666667,
+        "longitude": 108.05,
+        "coord_source": "https://ungegn.un.org/dashboard/cities/details?id=1206",
+        "coord_note": "Published city coordinates; representative location, not a farm or a province centroid."
+      }
+    ]
+  },
+  {
+    "id": "lam-dong",
+    "name": "Lâm Đồng",
+    "country": "Vietnam",
+    "scope": "Bảo Lộc representative point in the historical coffee-growing province; not a province-wide spatial average.",
+    "selection_note": "Fixed Bảo Lộc point for temporal comparability. Province names refer to the historical coffee-growing areas, not changing administrative boundaries. Daily observations are gridded NASA estimates, not a local station.",
+    "points": [
+      {
+        "name": "Bảo Lộc",
+        "latitude": 11.54798,
+        "longitude": 107.80772,
+        "coord_source": "https://www.mindat.org/feature-1588275.html",
+        "coord_note": "Published city coordinates; representative location, not a farm or a province centroid."
       }
     ]
   }
