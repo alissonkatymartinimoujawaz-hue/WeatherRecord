@@ -135,6 +135,7 @@ function renderCompare(){
  renderEvidence('compare-evidence',evidenceWindows(act,state.period));
 }
 ['period','year','frequency','measure','background'].forEach(k=>$(k).onchange=e=>{state[k]=k==='background'?e.target.checked:['year','period'].includes(k)?Number(e.target.value):e.target.value;if(k==='year')state.all=false;save();renderCompare();});
+$('inspect-cold').onclick=()=>{state.period=1;state.year=2021;state.compare=[];state.frequency='daily';state.measure='anomaly';state.all=false;state.background=false;save();renderCompare();};
 $('all-years').onclick=()=>{state.all=true;state.background=true;save();renderCompare();};$('date').onchange=renderDaily;$('window').onchange=renderDaily;
 async function loadRegion(){
  const version=++loadVersion;$('tooltip').hidden=true;$('error').hidden=true;data=null;
