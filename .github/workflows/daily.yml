@@ -25,8 +25,12 @@ jobs:
         if: github.event_name != 'push'
         run: |
           python scripts/update_nasa_daily.py
+      - name: Build individual city views
+        run: python scripts/build_city_series.py
       - name: Validate data
-        run: python scripts/validate_nasa.py
+        run: |
+          python scripts/validate_nasa.py
+          python scripts/validate_station_review.py
       - name: Preserve successful extraction
         if: github.event_name != 'push'
         run: |

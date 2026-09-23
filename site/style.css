@@ -3,3 +3,5 @@
 .region-controls{margin-top:24px;background:white;border:1px solid #d3dce5}.region-controls label{min-width:220px}body[aria-busy=true]{cursor:progress}
 
 .weather-evidence{margin-top:24px;margin-bottom:24px}.event-card{border-top:1px solid #d3dce5;padding:16px 0}.event-card summary{cursor:pointer;line-height:1.7;font-weight:600}.event-kind{font-size:12px;background:#e8eef4;color:#234963;padding:4px 7px;border-radius:4px}.event-date{font-weight:400;font-size:13px;margin-left:8px;color:#536b80}.station-observation{background:#eef4fa;padding:12px 16px;border-left:3px solid #4279bd}.weather-evidence caption{text-align:left;font-size:13px;padding:8px 0;color:#536b80}.weather-evidence th,.weather-evidence td{font-size:13px}.weather-evidence a{overflow-wrap:anywhere}
+
+nav{flex-wrap:wrap}#stations article{margin-bottom:22px}#stations .metric small{font-size:14px;font-weight:400}#station-summary{line-height:1.7}#station-quality{margin:20px 0}#station-charts .legend{display:flex;gap:20px}

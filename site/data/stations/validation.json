@@ -1,0 +1,113 @@
+{
+  "checked_utc": "2026-09-23T10:40:44.866158+00:00",
+  "result": "passed",
+  "stations": [
+    {
+      "station": "86848099999",
+      "days": 3165,
+      "months": 109,
+      "raw_files": 10,
+      "result": "passed"
+    },
+    {
+      "station": "83736099999",
+      "days": 4,
+      "months": 4,
+      "raw_files": 4,
+      "result": "passed"
+    },
+    {
+      "station": "86820099999",
+      "days": 3165,
+      "months": 108,
+      "raw_files": 10,
+      "result": "passed"
+    },
+    {
+      "station": "86778099999",
+      "days": 2955,
+      "months": 103,
+      "raw_files": 10,
+      "result": "passed"
+    },
+    {
+      "station": "86825099999",
+      "days": 2815,
+      "months": 95,
+      "raw_files": 10,
+      "result": "passed"
+    },
+    {
+      "station": "86786099999",
+      "days": 3274,
+      "months": 110,
+      "raw_files": 10,
+      "result": "passed"
+    },
+    {
+      "station": "48875099999",
+      "days": 9378,
+      "months": 350,
+      "raw_files": 32,
+      "result": "passed"
+    },
+    {
+      "station": "86871099999",
+      "days": 3236,
+      "months": 109,
+      "raw_files": 10,
+      "result": "passed"
+    },
+    {
+      "station": "A616",
+      "days": 7252,
+      "months": 239,
+      "raw_files": 21,
+      "result": "passed"
+    },
+    {
+      "station": "A515",
+      "days": 7356,
+      "months": 242,
+      "raw_files": 21,
+      "result": "passed"
+    },
+    {
+      "station": "A523",
+      "days": 7316,
+      "months": 241,
+      "raw_files": 21,
+      "result": "passed"
+    },
+    {
+      "station": "A524",
+      "days": 7321,
+      "months": 241,
+      "raw_files": 21,
+      "result": "passed"
+    },
+    {
+      "station": "A531",
+      "days": 7215,
+      "months": 238,
+      "raw_files": 21,
+      "result": "passed"
+    },
+    {
+      "station": "A529",
+      "days": 7035,
+      "months": 232,
+      "raw_files": 20,
+      "result": "passed"
+    },
+    {
+      "station": "A556",
+      "days": 5821,
+      "months": 192,
+      "raw_files": 17,
+      "result": "passed"
+    }
+  ],
+  "city_series": 9,
+  "scope": "Raw-source transcription and complete-period arithmetic; not certification of representativeness or instrument calibration."
+}

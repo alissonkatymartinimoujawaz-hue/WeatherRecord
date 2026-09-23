@@ -5,11 +5,11 @@ const yearColor=y=>d3.hsl(((y-1980)*137.507764)%360,.62,.38+((y-1980)%3)*.07).fo
 const fmt=(v,n=1)=>v==null?'—':Number(v).toLocaleString('en-GB',{minimumFractionDigits:n,maximumFractionDigits:n});
 const datefmt=s=>new Date(s+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
 const statusName=s=>({era5:'ERA5',era5_recent:'Recent ERA5 · subject to revision',ifs_provisional:'IFS · provisional',nasa:'NASA POWER',nasa_recent:'NASA POWER · recent, subject to revision',missing:'Missing data'}[s]||s);
-let data,byDate,regions,region,view='daily',loadVersion=0;let state={period:7,year:null,compare:[],background:true,source:'nasa',region:'sul',frequency:'monthly',measure:'value',all:false};
+let mainHeader={},data,byDate,regions,region,view='stations',loadVersion=0;let state={period:7,year:null,compare:[],background:true,source:'nasa',region:'sul',frequency:'monthly',measure:'value',all:false};
 try{Object.assign(state,JSON.parse(localStorage.getItem('weatherrecord-choices')||'{}'));}catch{}
 state.source='nasa';
 const save=()=>{try{localStorage.setItem('weatherrecord-choices',JSON.stringify(state));}catch{}};
-function switchView(v){$('tooltip').hidden=true;view=v;if(!data)return;document.querySelectorAll('.view').forEach(e=>e.hidden=e.id!==v);document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));if(data){if(v==='daily')renderDaily();if(v==='compare')renderCompare();}}
+function switchView(v){$('tooltip').hidden=true;view=v;if(v!=='stations'&&mainHeader.brand){$('brand-region').textContent=mainHeader.brand;$('freshness').innerHTML=mainHeader.freshness;}document.querySelector('.region-controls').hidden=v==='stations';if(!data)return;document.querySelectorAll('.view').forEach(e=>e.hidden=e.id!==v);document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));if(data){if(v==='daily')renderDaily();if(v==='compare')renderCompare();if(v==='stations')renderStationReview();}}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
 function plot(target,series,{daily=false,labels=[],unit='',rainBars=false,axis='Month',all=false,events=[]}={}){
  const el=$(target);if(!el||!el.clientWidth)return;el.replaceChildren();const w=el.clientWidth,h=310,m={l:57,r:14,t:12,b:55};
@@ -30,7 +30,7 @@ function plot(target,series,{daily=false,labels=[],unit='',rainBars=false,axis='
  const layer=svg.append('g').attr('clip-path',`url(#${clip})`),line=d3.line().defined(p=>p.y!==null&&Number.isFinite(p.y)).x(p=>x(p.x)).y(p=>y(p.y));
  for(const s of series){
   if(s.bar){const bw=Math.max(1,(w-m.l-m.r)/s.points.length*.67);layer.selectAll('.bar').data(s.points.filter(p=>p.y!==null)).join('rect').attr('x',p=>x(p.x)-bw/2).attr('y',p=>y(p.y)).attr('width',bw).attr('height',p=>Math.max(0,y(0)-y(p.y))).attr('fill',s.color).attr('opacity',.83);}
-  else{s.path=layer.append('path').datum(s.points).attr('data-series',s.name).attr('fill','none').attr('stroke',s.color).attr('stroke-width',s.width||1.8).attr('stroke-opacity',s.opacity??1).attr('stroke-dasharray',s.dash||null).attr('d',line);}
+  else if(!s.dotsOnly){s.path=layer.append('path').datum(s.points).attr('data-series',s.name).attr('fill','none').attr('stroke',s.color).attr('stroke-width',s.width||1.8).attr('stroke-opacity',s.opacity??1).attr('stroke-dasharray',s.dash||null).attr('d',line);}
   if(s.markers)layer.selectAll('.dots-'+s.name.replaceAll('/','')).data(s.points.filter(p=>p.y!==null)).join('circle').attr('cx',p=>x(p.x)).attr('cy',p=>y(p.y)).attr('r',2.5).attr('fill',s.color);
  }
  const guide=svg.append('line').attr('y1',m.t).attr('y2',h-m.b).attr('stroke','#72879a').attr('stroke-dasharray','3 3').attr('visibility','hidden');
@@ -158,6 +158,7 @@ async function loadRegion(){
   $('selection-note').textContent=region.selection_note||'Four equally weighted points. Boa Esperança and Guapé share the same MERRA-2 grid cell, which therefore accounts for 50% of this index.';
   $('download-values').href=folder+file+'.csv';$('download-provenance').href=folder+(ns?'nasa_provenance.json':'provenance.json');
   $('download-data').href=folder+file+'.json';$('download-audit').href=folder+'audit.json';
+  mainHeader={brand:$('brand-region').textContent,freshness:$('freshness').innerHTML};
   switchView(view);
  }catch(e){if(version!==loadVersion)return;$('error').hidden=false;$('error').textContent=e.message;$('freshness').textContent='Data unavailable';}
 }

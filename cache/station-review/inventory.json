@@ -1,0 +1,768 @@
+[
+  {
+    "region": "sul",
+    "city": "Varginha",
+    "point": {
+      "name": "Varginha",
+      "latitude": -21.56,
+      "longitude": -45.43,
+      "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_para_fins_de_levantamentos_estatisticos/censo_demografico_2022/mapas_municipais_estatisticos/MG/varginha_3170701/varginha_3170701_mme_a0.pdf",
+      "coord_note": "IBGE carte 2022, SIRGAS 2000, coordonnées publiées à 0,01 degré."
+    },
+    "noaa": [
+      {
+        "distance_km": 3.2,
+        "USAF": "868480",
+        "WBAN": "99999",
+        "STATION NAME": "VARGINHA",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-21.567",
+        "LON": "-045.400",
+        "ELEV(M)": "+0926.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 51.73,
+        "USAF": "836830",
+        "WBAN": "99999",
+        "STATION NAME": "MACHADO",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-21.667",
+        "LON": "-045.917",
+        "ELEV(M)": "+0873.0",
+        "BEGIN": "19891117",
+        "END": "20220329"
+      },
+      {
+        "distance_km": 57.48,
+        "USAF": "836870",
+        "WBAN": "99999",
+        "STATION NAME": "LAVRAS",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-21.233",
+        "LON": "-045.000",
+        "ELEV(M)": "+0919.0",
+        "BEGIN": "19360824",
+        "END": "20250824"
+      }
+    ],
+    "inmet": [
+      {
+        "distance_km": 2.76,
+        "CD_OSCAR": "0-2000-0-86848",
+        "DC_NOME": "VARGINHA",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-21.56638888",
+        "CD_WSI": "0-76-0-3170701000000083",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "949.78",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A515",
+        "VL_LONGITUDE": "-45.40416666",
+        "DT_INICIO_OPERACAO": "2006-07-12T21:00:00.000-03:00"
+      },
+      {
+        "distance_km": 54.85,
+        "CD_OSCAR": "0-2000-0-84815",
+        "DC_NOME": "MACHADO",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-21.68083332",
+        "CD_WSI": "0-76-0-3139003000000552",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "969",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A567",
+        "VL_LONGITUDE": "-45.94444444",
+        "DT_INICIO_OPERACAO": "2017-07-20T21:00:00.000-03:00"
+      }
+    ]
+  },
+  {
+    "region": "sul",
+    "city": "Carmo de Minas",
+    "point": {
+      "name": "Carmo de Minas",
+      "latitude": -22.121944,
+      "longitude": -45.128889,
+      "coord_source": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv56282.pdf",
+      "coord_note": "IBGE BCIM, ville : 22°07′19″ S, 45°07′44″ O. Conversion en degrés décimaux, arrondie à 6 décimales; ne signifie pas une précision métrique."
+    },
+    "noaa": [
+      {
+        "distance_km": 11.78,
+        "USAF": "837360",
+        "WBAN": "99999",
+        "STATION NAME": "SAO LOURENCO",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-22.100",
+        "LON": "-045.017",
+        "ELEV(M)": "+0900.0",
+        "BEGIN": "19310101",
+        "END": "20240702"
+      },
+      {
+        "distance_km": 32.73,
+        "USAF": "868710",
+        "WBAN": "99999",
+        "STATION NAME": "MARIA DA FE",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-22.317",
+        "LON": "-045.367",
+        "ELEV(M)": "+1277.5",
+        "BEGIN": "20160704",
+        "END": "20250801"
+      },
+      {
+        "distance_km": 35.12,
+        "USAF": "868730",
+        "WBAN": "99999",
+        "STATION NAME": "PASSA QUATRO",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-22.400",
+        "LON": "-044.967",
+        "ELEV(M)": "+1041.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      }
+    ],
+    "inmet": [
+      {
+        "distance_km": 33.01,
+        "CD_OSCAR": "0-2000-0-86871",
+        "DC_NOME": "MARIA DA FE",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-22.31444444",
+        "CD_WSI": "0-76-0-3139904000000151",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "1281.43",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A531",
+        "VL_LONGITUDE": "-45.37305554",
+        "DT_INICIO_OPERACAO": "2006-11-30T21:00:00.000-03:00"
+      },
+      {
+        "distance_km": 34.97,
+        "CD_OSCAR": "0-2000-0-86873",
+        "DC_NOME": "PASSA QUATRO",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-22.39583333",
+        "CD_WSI": "0-76-0-3147600000000201",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "1017.1",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A529",
+        "VL_LONGITUDE": "-44.96194444",
+        "DT_INICIO_OPERACAO": "2007-05-29T21:00:00.000-03:00"
+      }
+    ]
+  },
+  {
+    "region": "sul",
+    "city": "Boa Esperança",
+    "point": {
+      "name": "Boa Esperança",
+      "latitude": -21.083333,
+      "longitude": -45.55,
+      "coord_source": "https://www.gov.br/mdr/pt-br/composicao/orgaos-colegiados/comites-gestores-das-contas-dos-programas-de-revitalizacao-dos-recursos-hidricos/cpr-furnas/anexo-29-ampliacao-da-estacao-de-tratamento-de-esgoto-ete-de-boa-esperanca.pdf",
+      "coord_note": "SAAE Boa Esperança, section 5 : position municipale approximative 21°05′ S, 45°33′ O. Point représentatif et non coordonnées exactes d’une ferme."
+    },
+    "noaa": [
+      {
+        "distance_km": 55.98,
+        "USAF": "868480",
+        "WBAN": "99999",
+        "STATION NAME": "VARGINHA",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-21.567",
+        "LON": "-045.400",
+        "ELEV(M)": "+0926.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 59.41,
+        "USAF": "836870",
+        "WBAN": "99999",
+        "STATION NAME": "LAVRAS",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-21.233",
+        "LON": "-045.000",
+        "ELEV(M)": "+0919.0",
+        "BEGIN": "19360824",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 71.19,
+        "USAF": "868200",
+        "WBAN": "99999",
+        "STATION NAME": "FORMIGA",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-20.450",
+        "LON": "-045.450",
+        "ELEV(M)": "+0879.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      }
+    ],
+    "inmet": [
+      {
+        "distance_km": 55.8,
+        "CD_OSCAR": "0-2000-0-86848",
+        "DC_NOME": "VARGINHA",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-21.56638888",
+        "CD_WSI": "0-76-0-3170701000000083",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "949.78",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A515",
+        "VL_LONGITUDE": "-45.40416666",
+        "DT_INICIO_OPERACAO": "2006-07-12T21:00:00.000-03:00"
+      },
+      {
+        "distance_km": 70.58,
+        "CD_OSCAR": "0-2000-0-86820",
+        "DC_NOME": "FORMIGA",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-20.455",
+        "CD_WSI": "0-76-0-3126109000000094",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "878.14",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A524",
+        "VL_LONGITUDE": "-45.45388888",
+        "DT_INICIO_OPERACAO": "2006-08-16T21:00:00.000-03:00"
+      }
+    ]
+  },
+  {
+    "region": "sul",
+    "city": "Guapé",
+    "point": {
+      "name": "Guapé",
+      "latitude": -20.761944,
+      "longitude": -45.917778,
+      "coord_source": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv56282.pdf",
+      "coord_note": "IBGE BCIM, ville : 20°45′43″ S, 45°55′04″ O. Conversion en degrés décimaux, arrondie à 6 décimales."
+    },
+    "noaa": [
+      {
+        "distance_km": 59.78,
+        "USAF": "868200",
+        "WBAN": "99999",
+        "STATION NAME": "FORMIGA",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-20.450",
+        "LON": "-045.450",
+        "ELEV(M)": "+0879.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 74.38,
+        "USAF": "868190",
+        "WBAN": "99999",
+        "STATION NAME": "PASSOS",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-20.750",
+        "LON": "-046.633",
+        "ELEV(M)": "+0785.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 100.64,
+        "USAF": "836830",
+        "WBAN": "99999",
+        "STATION NAME": "MACHADO",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-21.667",
+        "LON": "-045.917",
+        "ELEV(M)": "+0873.0",
+        "BEGIN": "19891117",
+        "END": "20220329"
+      }
+    ],
+    "inmet": [
+      {
+        "distance_km": 59.13,
+        "CD_OSCAR": "0-2000-0-86820",
+        "DC_NOME": "FORMIGA",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-20.455",
+        "CD_WSI": "0-76-0-3126109000000094",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "878.14",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A524",
+        "VL_LONGITUDE": "-45.45388888",
+        "DT_INICIO_OPERACAO": "2006-08-16T21:00:00.000-03:00"
+      },
+      {
+        "distance_km": 74.48,
+        "CD_OSCAR": "0-2000-0-86819",
+        "DC_NOME": "PASSOS",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-20.74527777",
+        "CD_WSI": "0-76-0-3147907000000086",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "781.7",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A516",
+        "VL_LONGITUDE": "-46.63388888",
+        "DT_INICIO_OPERACAO": "2006-07-15T21:00:00.000-03:00"
+      }
+    ]
+  },
+  {
+    "region": "cerrado",
+    "city": "Patrocínio",
+    "point": {
+      "name": "Patrocínio",
+      "latitude": -18.94,
+      "longitude": -46.99,
+      "ibge_code": "3148103",
+      "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/MG/patrocinio/3148103_MM.pdf",
+      "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
+    },
+    "noaa": [
+      {
+        "distance_km": 6.71,
+        "USAF": "867780",
+        "WBAN": "99999",
+        "STATION NAME": "PATROCINIO",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-19.000",
+        "LON": "-046.983",
+        "ELEV(M)": "+0964.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 69.98,
+        "USAF": "835790",
+        "WBAN": "99999",
+        "STATION NAME": "ARAXA",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-19.567",
+        "LON": "-046.933",
+        "ELEV(M)": "+1004.0",
+        "BEGIN": "19380913",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 73.63,
+        "USAF": "867960",
+        "WBAN": "99999",
+        "STATION NAME": "ARAXA",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-19.600",
+        "LON": "-046.933",
+        "ELEV(M)": "+1021.5",
+        "BEGIN": "20160704",
+        "END": "20250530"
+      }
+    ],
+    "inmet": [
+      {
+        "distance_km": 6.32,
+        "CD_OSCAR": "0-2000-0-86778",
+        "DC_NOME": "PATROCINIO",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-18.99666666",
+        "CD_WSI": "0-76-0-3148103000000097",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "978.11",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A523",
+        "VL_LONGITUDE": "-46.98583333",
+        "DT_INICIO_OPERACAO": "2006-08-21T21:00:00.000-03:00"
+      },
+      {
+        "distance_km": 74.16,
+        "CD_OSCAR": "0-2000-0-86796",
+        "DC_NOME": "ARAXA",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-19.60583333",
+        "CD_WSI": "0-76-0-3104007000000037",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "1018.32",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A505",
+        "VL_LONGITUDE": "-46.94972221",
+        "DT_INICIO_OPERACAO": "2002-12-18T22:00:00.000-02:00"
+      }
+    ]
+  },
+  {
+    "region": "matas",
+    "city": "Manhuaçu",
+    "point": {
+      "name": "Manhuaçu",
+      "latitude": -20.26,
+      "longitude": -42.03,
+      "ibge_code": "3139409",
+      "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/MG/manhuacu/3139409_MM.pdf",
+      "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
+    },
+    "noaa": [
+      {
+        "distance_km": 15.98,
+        "USAF": "868250",
+        "WBAN": "99999",
+        "STATION NAME": "MANHUACU",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-20.267",
+        "LON": "-042.183",
+        "ELEV(M)": "+0837.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 33.25,
+        "USAF": "836390",
+        "WBAN": "99999",
+        "STATION NAME": "CAPARAO",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-20.517",
+        "LON": "-041.867",
+        "ELEV(M)": "+0843.0",
+        "BEGIN": "19900714",
+        "END": "20240701"
+      },
+      {
+        "distance_km": 52.66,
+        "USAF": "835920",
+        "WBAN": "99999",
+        "STATION NAME": "CARATINGA",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-19.800",
+        "LON": "-042.150",
+        "ELEV(M)": "+0609.0",
+        "BEGIN": "19360830",
+        "END": "20241130"
+      }
+    ],
+    "inmet": [
+      {
+        "distance_km": 15.94,
+        "CD_OSCAR": "0-2000-0-86825",
+        "DC_NOME": "MANHUACU",
+        "FL_CAPITAL": null,
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-20.26333333",
+        "CD_WSI": "0-76-0-3139409000000467",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "819.47",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A556",
+        "VL_LONGITUDE": "-42.18277777",
+        "DT_INICIO_OPERACAO": "2010-09-24T21:00:00.000-03:00"
+      },
+      {
+        "distance_km": 59.35,
+        "CD_OSCAR": "0-2000-0-86802",
+        "DC_NOME": "CARATINGA",
+        "FL_CAPITAL": null,
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-19.73583333",
+        "CD_WSI": "0-76-0-3113404000000193",
+        "CD_DISTRITO": " 05",
+        "VL_ALTITUDE": "609.25",
+        "SG_ESTADO": "MG",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A554",
+        "VL_LONGITUDE": "-42.13722221",
+        "DT_INICIO_OPERACAO": "2007-05-23T21:00:00.000-03:00"
+      }
+    ]
+  },
+  {
+    "region": "sao-mateus",
+    "city": "São Mateus",
+    "point": {
+      "name": "São Mateus",
+      "latitude": -18.71,
+      "longitude": -39.86,
+      "ibge_code": "3204906",
+      "coord_source": "https://geoftp.ibge.gov.br/cartas_e_mapas/mapas_municipais/colecao_de_mapas_municipais/2020/ES/sao_mateus/3204906_MM.pdf",
+      "coord_note": "IBGE, carte municipale 2020, coordonnées publiées à 0,01 degré ; point de la ville, pas une ferme."
+    },
+    "noaa": [
+      {
+        "distance_km": 1.31,
+        "USAF": "867860",
+        "WBAN": "99999",
+        "STATION NAME": "SAO MATEUS",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-18.717",
+        "LON": "-039.850",
+        "ELEV(M)": "+0040.5",
+        "BEGIN": "20160704",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 1.53,
+        "USAF": "835500",
+        "WBAN": "99999",
+        "STATION NAME": "SAO MATEUS",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-18.700",
+        "LON": "-039.850",
+        "ELEV(M)": "+0025.0",
+        "BEGIN": "19360824",
+        "END": "20220126"
+      },
+      {
+        "distance_km": 55.09,
+        "USAF": "867850",
+        "WBAN": "99999",
+        "STATION NAME": "NOVA VENECIA",
+        "CTRY": "BR",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "-18.700",
+        "LON": "-040.383",
+        "ELEV(M)": "+0155.5",
+        "BEGIN": "20160704",
+        "END": "20230302"
+      }
+    ],
+    "inmet": [
+      {
+        "distance_km": 3.79,
+        "CD_OSCAR": "0-2000-0-86786",
+        "DC_NOME": "SAO MATEUS",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-18.6761111",
+        "CD_WSI": "0-76-0-3204906000000124",
+        "CD_DISTRITO": " 06",
+        "VL_ALTITUDE": "28.66",
+        "SG_ESTADO": "ES",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A616",
+        "VL_LONGITUDE": "-39.86416666",
+        "DT_INICIO_OPERACAO": "2006-10-24T21:00:00.000-03:00"
+      },
+      {
+        "distance_km": 75.2,
+        "CD_OSCAR": "0-2000-0-86805",
+        "DC_NOME": "LINHARES",
+        "FL_CAPITAL": "N",
+        "DT_FIM_OPERACAO": null,
+        "CD_SITUACAO": "Operante",
+        "TP_ESTACAO": "Automatica",
+        "VL_LATITUDE": "-19.35694444",
+        "CD_WSI": "0-76-0-3203205000000128",
+        "CD_DISTRITO": " 06",
+        "VL_ALTITUDE": "40",
+        "SG_ESTADO": "ES",
+        "SG_ENTIDADE": "INMET",
+        "CD_ESTACAO": "A614",
+        "VL_LONGITUDE": "-40.0686111",
+        "DT_INICIO_OPERACAO": "2006-10-26T21:00:00.000-03:00"
+      }
+    ]
+  },
+  {
+    "region": "dak-lak",
+    "city": "Buôn Ma Thuột",
+    "point": {
+      "name": "Buôn Ma Thuột",
+      "latitude": 12.666667,
+      "longitude": 108.05,
+      "coord_source": "https://ungegn.un.org/dashboard/cities/details?id=1206",
+      "coord_note": "Published city coordinates; representative location, not a farm or a province centroid."
+    },
+    "noaa": [
+      {
+        "distance_km": 4.01,
+        "USAF": "488750",
+        "WBAN": "99999",
+        "STATION NAME": "BANMETHUOT",
+        "CTRY": "VM",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "+12.683",
+        "LON": "+108.083",
+        "ELEV(M)": "+0537.0",
+        "BEGIN": "19561231",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 97.13,
+        "USAF": "489710",
+        "WBAN": "99999",
+        "STATION NAME": "MONDOL KIRI",
+        "CTRY": "CB",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "+12.450",
+        "LON": "+107.183",
+        "ELEV(M)": "+0690.0",
+        "BEGIN": "20221230",
+        "END": "20250811"
+      },
+      {
+        "distance_km": 133.18,
+        "USAF": "488770",
+        "WBAN": "99999",
+        "STATION NAME": "NHA TRANG",
+        "CTRY": "VM",
+        "STATE": "",
+        "ICAO": "VVNT",
+        "LAT": "+12.250",
+        "LON": "+109.200",
+        "ELEV(M)": "+0010.0",
+        "BEGIN": "19561231",
+        "END": "20250824"
+      }
+    ],
+    "inmet": []
+  },
+  {
+    "region": "lam-dong",
+    "city": "Bảo Lộc",
+    "point": {
+      "name": "Bảo Lộc",
+      "latitude": 11.54798,
+      "longitude": 107.80772,
+      "coord_source": "https://www.mindat.org/feature-1588275.html",
+      "coord_note": "Published city coordinates; representative location, not a farm or a province centroid."
+    },
+    "noaa": [
+      {
+        "distance_km": 75.45,
+        "USAF": "488870",
+        "WBAN": "99999",
+        "STATION NAME": "PHAN THIET",
+        "CTRY": "VM",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "+10.933",
+        "LON": "+108.100",
+        "ELEV(M)": "+0005.0",
+        "BEGIN": "19561008",
+        "END": "20250824"
+      },
+      {
+        "distance_km": 121.15,
+        "USAF": "489710",
+        "WBAN": "99999",
+        "STATION NAME": "MONDOL KIRI",
+        "CTRY": "CB",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "+12.450",
+        "LON": "+107.183",
+        "ELEV(M)": "+0690.0",
+        "BEGIN": "20221230",
+        "END": "20250811"
+      },
+      {
+        "distance_km": 129.71,
+        "USAF": "488750",
+        "WBAN": "99999",
+        "STATION NAME": "BANMETHUOT",
+        "CTRY": "VM",
+        "STATE": "",
+        "ICAO": "",
+        "LAT": "+12.683",
+        "LON": "+108.083",
+        "ELEV(M)": "+0537.0",
+        "BEGIN": "19561231",
+        "END": "20250824"
+      }
+    ],
+    "inmet": []
+  }
+]

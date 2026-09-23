@@ -68,3 +68,36 @@ Le site affiche séparément la date de collecte et la dernière date de donnée
 Attribution : NASA POWER, ECMWF/Copernicus et Open-Meteo pour l’archive ERA5,
 IBGE pour les coordonnées, D3 (ISC) pour les graphiques. D3 7.9.0 est fourni localement
 avec sa licence pour éviter une dépendance à un CDN lors de l’affichage.
+
+
+## Station review — 23 September 2026
+
+The default Stations & quality view covers all nine requested city points separately.
+Seven INMET automatic-station archives (142 station-year CSV files, 2006–2026 where
+available) and eight NOAA GSOD archives are retained separately from NASA. INMET
+station A531 is a 33 km proxy for Carmo de Minas, not a measurement in that city.
+The closer Sao Lourenco GSOD files retrieved cover only 1992–1996; the catalogue's
+later end date does not guarantee downloadable GSOD coverage. Bao Loc has no verified
+local station series: the coastal Phan Thiet proxy is rejected. Boa Esperanca and
+Guape have distant proxies explicitly marked as context only.
+
+INMET hourly precipitation and extrema apply to the preceding hour: they are assigned
+to that hour before aggregation into UTC days. Instantaneous hourly temperatures
+are averaged over UTC hours 00–23. A full daily aggregate requires 24 valid hours per
+variable; a full monthly aggregate requires every calendar day for that variable.
+Purple dots retain observed extremes from partial days without calling them full-day
+extremes. NOAA Fahrenheit/inch data are converted to Celsius/mm; only precipitation
+flags D/F/G are accepted as explicit 24-hour totals. Source flags are retained.
+GSOD reporting windows and NASA local solar time differ from INMET UTC. No sources
+are spliced, no station normal is invented, no gap is zero-filled, and no automatic
+bias correction is applied. Raw archives, hashes and historical INMET coordinates
+are downloadable. Current catalogue coordinates determine displayed distances.
+
+Station archives are a dated review, not a second daily collector. The existing daily
+workflow refreshes NASA once, builds the nine city views from that same cache, and
+validates station archives plus all regional/city arithmetic before publishing.
+For a deliberate future station archive refresh, run in order:
+`python scripts/review_stations.py`, `python scripts/collect_inmet_review.py`,
+`python scripts/build_inmet_review.py`, `python scripts/validate_station_review.py`.
+`cache/station-review` retains the station selection inputs and NOAA documentation.
+Temporary downloaded/extracted members live in the parent work/station-review folder.
