@@ -1,0 +1,45 @@
+'use strict';
+// Reviewed reports, not an exhaustive disaster database. Dates may be reporting windows.
+// Observations are never substituted for the regional gridded weather series.
+window.WEATHER_EVIDENCE = [
+ {id:'sul-2014-dry',regions:['sul'],start:'2014-02-10',end:'2014-02-10',kind:'Drought',title:'Dry weather affecting coffee',scope:'Sul de Minas',precision:'Report date; onset and end not established.',summary:'Emater-MG reported dry weather affecting the coffee harvest. This dated report is a marker, not a measured drought duration.',source:'Emater-MG · 10 February 2014',url:'https://www.emater.mg.gov.br/portal.cgi?flagweb=site_pgn_radio2013'},
+ {id:'es-2015-16-dry',regions:['sao-mateus'],start:'2015-01-01',end:'2016-12-31',kind:'Drought',title:'Water shortage in conilon-growing areas',scope:'Espírito Santo · state-wide context, not a São Mateus station record',precision:'Calendar-year reporting window; conditions were not uniform every day.',summary:'Incaper reports drought and poorly distributed rain during flowering and fruit development in 2015–2016. Water shortages also constrained irrigation; conditions improved towards the end of 2016.',source:'Incaper / Governo ES · 9 January 2018',url:'https://www.es.gov.br/Noticia/espirito-santo-fecha-2017-com-aumento-na-producao-de-cafe-conilon'},
+ {id:'sul-2021-dry',regions:['sul'],start:'2021-01-01',end:'2021-01-31',kind:'Drought / heat',title:'Dry spell during grain filling',scope:'Sul de Minas',precision:'January reporting window; exact 15-day interval not provided.',summary:'Emater-MG reported fifteen consecutive rainless days in January during grain filling, following heat and dry weather in 2020. This is not a quantified weather-only yield loss.',source:'Agência Minas / Emater-MG · 2021',url:'https://agenciaminas.mg.gov.br/noticia/cafeicultores-devem-enfrentar-quebra-na-producao-em-2021'},
+ {id:'sul-2021-cold-1',regions:['sul'],start:'2021-07-01',end:'2021-07-01',kind:'Cold',title:'Sub-zero station temperature',scope:'Maria da Fé · local observation within southern Minas, outside the four index points',precision:'Observed day.',summary:'The INMET bulletin records a minimum of −4.2 °C at Maria da Fé. A local minimum is not the regional average.',observations:[{date:'2021-07-01',station:'Maria da Fé',metric:'Tmin',value:-4.2,unit:'°C'}],source:'INMET · bulletin 23 July 2021, p. 4',url:'https://www.agenciaminas.mg.gov.br/ckeditor_assets/attachments/11628/previsao_5dis_20210723.pdf'},
+ {id:'sul-2021-frost',regions:['sul'],start:'2021-07-20',end:'2021-07-20',kind:'Frost / cold',title:'July 2021 frost episode',scope:'Sul de Minas; temperature observation at Maria da Fé',precision:'20 July marker; not the full duration or footprint of July frost.',summary:'INMET records −5.0 °C at Maria da Fé on 20 July. Regional reports also document July frost in coffee-growing areas. A positive NASA regional minimum does not rule out local frost.',observations:[{date:'2021-07-20',station:'Maria da Fé',metric:'Tmin',value:-5,unit:'°C'}],source:'INMET · bulletin 23 July 2021, p. 4',url:'https://www.agenciaminas.mg.gov.br/ckeditor_assets/attachments/11628/previsao_5dis_20210723.pdf',additionalSource:'https://www.agenciaminas.mg.gov.br/noticia/safra-de-cafe-em-minas-gerais-deve-ter-reducao-de-38-1'},
+ {id:'sul-2023-rain',regions:['sul'],start:'2023-02-12',end:'2023-02-12',kind:'Heavy rain',title:'Flooding reported in Varginha',scope:'Varginha · municipal event, not the whole index area',precision:'Reported event day.',summary:'The state civil-defence bulletin reports intense rain and flooding in Varginha on 12 February. Short local rainfall bursts can be smoothed in daily regional rainfall.',source:'Defesa Civil MG · bulletin 13 February 2023',url:'https://www.mg.gov.br/system/files/media/defesacivil/documento_detalhado/2025/boletim-diario/174-1025_Boletim_044_de_13_de_Fevereiro_de_2023.pdf'},
+ {id:'mg-2024-heat',regions:['sul','cerrado','matas'],start:'2024-09-22',end:'2024-09-28',kind:'Heat',title:'Late-September heat wave',scope:'Broad Brazilian event including Minas Gerais; local exposure varies',precision:'INMET event window; not proof of equal intensity at each coffee location.',summary:'INMET describes a heat wave on 22–28 September, with some Minas Gerais stations above 40 °C. No such station maximum is assigned to the selected point.',source:'INMET · September 2024 extremes, pp. 4–5',url:'https://portal.inmet.gov.br/uploads/Nota-EventosExtremos_Brasil_Setembro_2024_final.pdf'},
+ {id:'daklak-2024-dry',regions:['dak-lak'],start:'2024-01-01',end:'2024-04-30',kind:'Drought / heat',title:'Heat and water shortages',scope:'Đắk Lắk · provincial context, not a Buôn Ma Thuột station record',precision:'First-four-month reporting window; exact event boundaries not provided.',summary:'The provincial report describes widespread severe heat during the first four months of 2024 and water shortages. The NASA point remains a separate local-grid estimate.',source:'Đắk Lắk provincial portal · 20 May 2024',url:'https://daklak.gov.vn/web/english/-/implementing-natural-disaster-prevention-and-search-and-rescue-work-in-2024'}
+];
+
+const weatherEscape = value => String(value).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function evidenceWindows(years,period){return years.map(y=>({start:`${y}-${String(period).padStart(2,'0')}-01`,end:new Date(Date.UTC(y+1,period-1,0)).toISOString().slice(0,10)}));}
+function matchingEvidence(regionId,windows){return window.WEATHER_EVIDENCE.filter(e=>e.regions.includes(regionId)&&windows.some(w=>e.start<=w.end&&e.end>=w.start));}
+function evidenceStats(payload,start,end){
+ const rows=payload.rows.filter(r=>r[0]>=start&&r[0]<=end),expected=Math.round((Date.parse(end)-Date.parse(start))/86400000)+1;
+ const valid=i=>rows.length===expected&&rows.every(r=>Number.isFinite(r[i]));
+ const normal=rows.map(r=>payload.daily_normal[r[0].slice(5)]?.[0]);
+ return {rain:valid(1)?rows.reduce((s,r)=>s+r[1],0):null,normal:rows.length===expected&&normal.every(Number.isFinite)?normal.reduce((s,v)=>s+v,0):null,min:valid(3)?Math.min(...rows.map(r=>r[3])):null,max:valid(4)?Math.max(...rows.map(r=>r[4])):null};
+}
+function renderEvidence(target,windows){
+ const host=document.getElementById(target),events=matchingEvidence(state.region,windows),esc=weatherEscape;
+ const source=state.source==='nasa'?'NASA':'ERA5';
+ host.innerHTML=`<h2>Documented weather events</h2><p>Same region and selected dates. Reviewed examples, not a complete historical inventory. No entry does not mean no event occurred. Gridded curves are unchanged.</p>`;
+ if(!events.length){host.insertAdjacentHTML('beforeend','<p class="notice">No reviewed report in the current selection. Choose 2021/22 · Sul de Minas to inspect the July cold episode.</p>');return;}
+ const table=events.map(e=>{
+  const selected=windows.filter(w=>e.start<=w.end&&e.end>=w.start).map(w=>({start:e.start>w.start?e.start:w.start,end:e.end<w.end?e.end:w.end}));
+  const metrics=selected.map(w=>{const s=evidenceStats(data,w.start,w.end);return `<tr><td>${esc(w.start)} → ${esc(w.end)}</td><td>${fmt(s.rain)} / ${fmt(s.normal)} mm</td><td>${fmt(s.min)} °C</td><td>${fmt(s.max)} °C</td></tr>`;}).join('');
+  const obs=(e.observations||[]).filter(o=>windows.some(w=>o.date>=w.start&&o.date<=w.end)).map(o=>{const r=byDate.get(o.date);return `<p class="station-observation"><strong>INMET · ${esc(o.station)} · ${esc(o.date)}: ${esc(o.metric)} ${fmt(o.value)} ${esc(o.unit)}</strong><br>${source} selected regional series, same day: Tmin ${fmt(r?.[3])} °C. Different spatial coverage; no bias correction or station anomaly calculated.</p>`;}).join('');
+  return `<details class="event-card" ${e.observations?'open':''}><summary><span class="event-kind">${esc(e.kind)}</span> ${esc(e.title)} <span class="event-date">${esc(e.start===e.end?e.start:e.start+' → '+e.end)}</span></summary><p><strong>${esc(e.scope)}</strong></p><p>${esc(e.summary)}</p><p>${esc(e.precision)}</p>${obs}<div class="table-wrap"><table><caption>${source} selected location/index · overlap with your selected dates</caption><thead><tr><th>Comparison window</th><th>Rain / 1991–2020 normal</th><th>Lowest daily Tmin</th><th>Highest daily Tmax</th></tr></thead><tbody>${metrics}</tbody></table></div><p><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)}</a>${e.additionalSource?` · <a href="${esc(e.additionalSource)}" target="_blank" rel="noopener">Regional frost report</a>`:''}</p></details>`;
+ }).join('');
+ host.insertAdjacentHTML('beforeend',table);
+}
+function eventMarkers(years,period,monthly,calendarDays){
+ const windows=evidenceWindows(years,period),events=matchingEvidence(state.region,windows),markers=[];
+ for(const e of events)for(let i=0;i<windows.length;i++){
+  const w=windows[i];if(e.start>w.end||e.end<w.start)continue;
+  const date=e.start<w.start?w.start:e.start,month=Number(date.slice(5,7)),day=Number(date.slice(8));
+  markers.push({x:monthly?(month-period+12)%12:calendarDays.findIndex(([m,d])=>m===month&&d===day),label:`${e.kind} · ${date} · ${e.scope}`,id:e.id});
+ }
+ return markers;
+}

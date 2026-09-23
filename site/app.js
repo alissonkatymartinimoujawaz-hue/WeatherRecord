@@ -11,10 +11,11 @@ state.source='nasa';
 const save=()=>{try{localStorage.setItem('weatherrecord-choices',JSON.stringify(state));}catch{}};
 function switchView(v){$('tooltip').hidden=true;view=v;if(!data)return;document.querySelectorAll('.view').forEach(e=>e.hidden=e.id!==v);document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));if(data){if(v==='daily')renderDaily();if(v==='compare')renderCompare();}}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
-function plot(target,series,{daily=false,labels=[],unit='',rainBars=false,axis='Month',all=false}={}){
+function plot(target,series,{daily=false,labels=[],unit='',rainBars=false,axis='Month',all=false,events=[]}={}){
  const el=$(target);if(!el||!el.clientWidth)return;el.replaceChildren();const w=el.clientWidth,h=310,m={l:57,r:14,t:12,b:55};
  const vals=series.flatMap(s=>s.points.filter(p=>p.y!==null&&Number.isFinite(p.y))),xs=vals.map(p=>p.x),ys=vals.map(p=>p.y);
  if(!vals.length){el.textContent='No complete data for this selection.';return;}
+ if(daily){const bounds=d3.extent(xs),start=new Date(bounds[0]).toISOString().slice(0,10),end=new Date(bounds[1]).toISOString().slice(0,10);events=matchingEvidence(state.region,[{start,end}]).map(e=>({x:Date.parse((e.start<start?start:e.start)+'T00:00:00Z'),label:`${e.kind} · ${e.start} · ${e.scope}`}));}
  let [lo,hi]=d3.extent(ys);const pad=(hi-lo||1)*.09;lo-=pad;hi+=pad;if(rainBars)lo=Math.min(0,lo);
  const x=(daily?d3.scaleUtc():d3.scaleLinear()).domain(d3.extent(xs)).range([m.l+3,w-m.r-3]);const y=d3.scaleLinear().domain([lo,hi]).nice().range([h-m.b,m.t]);
  const svg=d3.select(el).append('svg').attr('viewBox',`0 0 ${w} ${h}`).attr('width',w).attr('height',h).attr('role','img').attr('aria-label',el.closest('article').querySelector('h3').textContent+' ; '+unit);
@@ -56,6 +57,13 @@ function plot(target,series,{daily=false,labels=[],unit='',rainBars=false,axis='
   const tip=$('tooltip');tip.hidden=false;tip.innerHTML=`<strong>${daily?datefmt(new Date(at).toISOString().slice(0,10)):labels[Math.round(at)]}</strong><div class="${rows.length>6?'tooltip-grid':''}">${rows.map(r=>`<div class="tip-row"><span>${r.name}</span><span>${fmt(r.v,unit==='fraction'?3:1)}</span></div>`).join('')}</div>`;
   const left=Math.min(window.innerWidth-tip.offsetWidth-12,Math.max(8,event.clientX+14));let top=event.clientY+16;if(top+tip.offsetHeight>window.innerHeight-8)top=Math.max(8,event.clientY-tip.offsetHeight-10);tip.style.left=left+'px';tip.style.top=top+'px';
  }
+ // Event dates are annotations, never artificial temperature or rainfall values.
+ for(const [i,e] of events.entries()){
+  if(e.x<x.domain()[0]||e.x>x.domain()[1])continue;
+  const a=svg.append('a').attr('href','#'+(target.startsWith('compare-')?'compare-evidence':'daily-evidence')).attr('aria-label',e.label);
+  a.append('line').attr('x1',x(e.x)).attr('x2',x(e.x)).attr('y1',m.t+12).attr('y2',h-m.b).attr('stroke','#71849a').attr('stroke-dasharray','2 5').attr('opacity',.5).attr('pointer-events','none');
+  a.append('circle').attr('cx',x(e.x)).attr('cy',m.t+5+(i%2)*12).attr('r',5).attr('fill','#102b43');a.append('title').text(e.label);
+ }
  overlay.on('pointermove',e=>{if(!pinned)show(e);}).on('pointerleave',()=>{if(!pinned){$('tooltip').hidden=true;guide.attr('visibility','hidden');resetHighlight();}}).on('click',e=>{pinned=!pinned;show(e);if(!pinned){$('tooltip').hidden=true;guide.attr('visibility','hidden');resetHighlight();}});
 }
 function renderDaily(){
@@ -68,6 +76,7 @@ function renderDaily(){
  plot('daily-temp',[...[[2,'Tmean','#c76b20'],[3,'Tmin','#4279bd'],[4,'Tmax','#b74351']].map(([j,name,color])=>({name,color,points:rs.map(r=>point(r,j))})),{name:'Tmean normal',color:'#223c52',dash:'5 4',points:rs.map(r=>({x:Date.parse(r[0]+'T00:00:00Z'),y:data.daily_normal[r[0].slice(5)]?.[1]??null}))}],{daily:true,unit:'°C',axis:data.timezone==='LST'?'Date · local solar time':'Date · America/Sao_Paulo'});
  $('daily-soil-article').hidden=!data.soil_daily;
  if(data.soil_daily)plot('daily-soil',[{name:'Root-zone wetness',color:'#268750',points:rs.map(r=>({x:Date.parse(r[0]+'T00:00:00Z'),y:data.soil_daily[r[0]]??null}))},{name:'Normal',color:'#223c52',dash:'5 4',points:rs.map(r=>({x:Date.parse(r[0]+'T00:00:00Z'),y:data.soil_daily_normal[r[0].slice(5)]??null}))}],{daily:true,unit:'fraction',axis:'Date · local solar time'});
+ renderEvidence('daily-evidence',[{start:rs[0][0],end:date}]);
  $('daily-table').innerHTML=[...rs].reverse().map(r=>`<tr><td>${datefmt(r[0])}</td>${r.slice(1,5).map(v=>`<td>${fmt(v)}</td>`).join('')}<td>${fmt(data.soil_daily?.[r[0]],3)}</td><td>${statusName(r[5])}</td></tr>`).join('');
 }
 function yearLabel(y){return state.period===1?String(y):`${y}/${String(y+1).slice(-2)}`;}
@@ -86,7 +95,7 @@ function renderCompare(){
  $('selected-legend').innerHTML='<span class="normal-key">1991–2020 normal</span>'+(state.all?'<span>All years</span>':act.map(y=>`<span style="--key:${color(y)}">${yearLabel(y)}${y===state.year?' · focus':''}</span>`).join(''))+(state.background&&!state.all?'<span>Other years in grey</span>':'');
  $('compare-note').textContent=`${region.name} · ${ns?'NASA POWER':'ERA5 archive'} · latest day: ${datefmt(src.last_date)}. Source-specific 1991–2020 normal. Hover over a curve to see only that year; click to pin. Missing days remain blank.`;
  const monthly=state.frequency==='monthly',cumulative=state.frequency==='cumulative',an=state.measure==='anomaly';
- const dims=cumulative?[['Cumulative rainfall',0,'mm']]:[['Rainfall',0,'mm'],['Mean temperature',1,'°C'],['Average minimum temperature',2,'°C'],['Average maximum temperature',3,'°C'],...(ns?[['Root-zone wetness',4,'fraction']]:[])];
+ const dims=cumulative?[['Cumulative rainfall',0,'mm']]:[['Rainfall',0,'mm'],['Mean temperature',1,'°C'],[monthly?'Average daily minimum':'Daily minimum temperature',2,'°C'],[monthly?'Average daily maximum':'Daily maximum temperature',3,'°C'],...(ns?[['Root-zone wetness',4,'fraction']]:[])];
  $('comparison-charts').innerHTML=dims.map(([name,j,unit])=>`<article><div class="chart-heading"><h3>${name}${an?' · anomaly':''}</h3><span>${unit}</span></div><div class="plot" id="compare-${j}"></div></article>`).join('');
  const order=d3.range(12).map(i=>(i+state.period-1)%12+1),calendarDays=[];
  order.forEach(m=>{const days=new Date(Date.UTC(2000,m,0)).getUTCDate();for(let d=1;d<=days;d++)calendarDays.push([m,d]);});
@@ -121,8 +130,9 @@ function renderCompare(){
   let total=0;
   const np=monthly?order.map((m,i)=>({x:i,y:an?0:monthNormals[m-1][j]})):calendarDays.map(([m,d],i)=>{let year=state.year+(m<state.period?1:0);if(d>new Date(Date.UTC(year,m,0)).getUTCDate())return{x:i,y:null};let v=dailyNormal(`${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`,j);if(cumulative&&v!==null)total+=v;return{x:i,y:an?0:cumulative?total:v};});
   series.push({name:'Normal',points:np,color:'#203b50',width:2.2,dash:'6 4',normal:true});
-  plot('compare-'+j,series,{labels,unit,axis:monthly?'Month of the selected year':'Day of the selected year',all:state.all});
+  plot('compare-'+j,series,{labels,unit,axis:monthly?'Month of the selected year':'Day of the selected year',all:state.all,events:eventMarkers(act,state.period,monthly,calendarDays)});
  }
+ renderEvidence('compare-evidence',evidenceWindows(act,state.period));
 }
 ['period','year','frequency','measure','background'].forEach(k=>$(k).onchange=e=>{state[k]=k==='background'?e.target.checked:['year','period'].includes(k)?Number(e.target.value):e.target.value;if(k==='year')state.all=false;save();renderCompare();});
 $('all-years').onclick=()=>{state.all=true;state.background=true;save();renderCompare();};$('date').onchange=renderDaily;$('window').onchange=renderDaily;
